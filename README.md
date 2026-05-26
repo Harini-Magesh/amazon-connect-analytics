@@ -173,24 +173,6 @@ This project demonstrates practical understanding of:
 * PostgreSQL warehousing
 * Distributed systems concepts
 
----
-
-# Skills Demonstrated
-
-* Data Engineering
-* Streaming Analytics
-* Cloud Analytics Concepts
-* Operational Intelligence
-* Dashboard Engineering
-* Python Development
-* PostgreSQL
-* Docker
-* Kafka
-* Streamlit
-* ETL Pipeline Development
-* Data Visualization
-
----
 
 # Author
 
