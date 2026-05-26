@@ -1,75 +1,31 @@
 # Real-Time Contact Center Intelligence Platform
 
-Enterprise-grade real-time streaming analytics and operational intelligence platform built using Apache Kafka, PostgreSQL, Streamlit, Docker, and Python.
+## Project Overview
 
-This project simulates modern cloud-based contact center analytics systems similar to enterprise operational intelligence platforms used in large-scale customer support environments.
+This project is a real-time contact center analytics platform designed to simulate modern enterprise customer support monitoring systems used in large-scale cloud-native environments such as Amazon Connect operational analytics platforms.
 
----
+The system streams live customer interaction events through Apache Kafka, processes them using distributed streaming architecture concepts, stores operational analytics data inside PostgreSQL, and visualizes business KPIs using an interactive Streamlit dashboard.
 
-# Project Overview
+The platform demonstrates:
 
-This platform demonstrates a complete end-to-end streaming analytics pipeline where customer interaction records are continuously generated, processed, stored, analyzed, and visualized in real time.
-
-The system focuses on operational intelligence for contact center environments including:
-
-- Real-time KPI monitoring
-- SLA breach tracking
-- Queue performance analytics
+- Real-time event streaming
+- Distributed analytics pipeline architecture
+- Operational intelligence monitoring
+- SLA breach analytics
 - Customer sentiment analysis
-- Wait time monitoring
-- Agent performance tracking
-- AI-driven anomaly detection
-- Interactive BI dashboard reporting
+- AI-powered anomaly detection
+- Dashboard visualization
+- Event-driven system design
+- Data engineering concepts
 
-The architecture follows modern event-driven data engineering principles commonly used in enterprise cloud analytics systems.
-
----
-
-# High-Level Architecture
-
-```text
-                    ┌──────────────────────┐
-                    │  Call Data Generator │
-                    │  Simulated Call Data │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │   Kafka Producer     │
-                    │ Real-Time Streaming  │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │    Kafka Broker      │
-                    │   Event Streaming    │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │   Kafka Consumer     │
-                    │ Event Processing ETL │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ PostgreSQL Warehouse │
-                    │ Analytics Storage    │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ Streamlit Dashboard  │
-                    │ Operational Insights │
-                    └──────────────────────┘
-```
+This project resembles simplified versions of enterprise operational intelligence systems used in cloud contact centers and customer support analytics environments.
 
 ---
 
-# Enterprise Architecture Workflow
+# Architecture
 
 ```text
-Call Generator
+Call Data Generator
       ↓
 Kafka Producer
       ↓
@@ -79,94 +35,407 @@ Streaming Consumer
       ↓
 PostgreSQL Analytics Warehouse
       ↓
-Real-Time Streamlit Dashboard
-      ↓
-Operational Intelligence & Alerts
+Streamlit Dashboard
 ```
 
 ---
 
-# Key Features
+# High-Level Architecture
 
-## Real-Time Streaming Analytics
-- Continuous event streaming using Apache Kafka
-- Event-driven architecture
-- Real-time operational monitoring
-- Streaming ETL processing pipeline
+```text
+                ┌────────────────────────────┐
+                │ Call Data Generator        │
+                │ Customer Interaction Data  │
+                └─────────────┬──────────────┘
+                              │
+                              ▼
+                ┌────────────────────────────┐
+                │ Kafka Producer             │
+                │ Real-Time Streaming        │
+                └─────────────┬──────────────┘
+                              │
+                              ▼
+                ┌────────────────────────────┐
+                │ Kafka Topic                │
+                │ call_records_topic         │
+                └─────────────┬──────────────┘
+                              │
+                              ▼
+                ┌────────────────────────────┐
+                │ Analytics Consumer         │
+                │ Event Processing ETL       │
+                └─────────────┬──────────────┘
+                              │
+                              ▼
+                ┌────────────────────────────┐
+                │ PostgreSQL Warehouse       │
+                │ Analytics Storage          │
+                └─────────────┬──────────────┘
+                              │
+                              ▼
+                ┌────────────────────────────┐
+                │ Streamlit Dashboard        │
+                │ Live Operational Insights  │
+                └────────────────────────────┘
+```
 
 ---
 
-## Enterprise BI Dashboard
-- Interactive Streamlit dashboard
-- Real-time auto refresh monitoring
-- Enterprise dark-theme operational UI
-- Dynamic filtering and analytics visualization
+# Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Language | Python |
+| Streaming | Apache Kafka |
+| Containerization | Docker |
+| Data Processing | Python Consumers |
+| Database | PostgreSQL |
+| Dashboard | Streamlit |
+| Visualization | Plotly |
+| ORM | SQLAlchemy |
+| Fake Data Generation | Faker |
+| Version Control | Git & GitHub |
 
 ---
 
-## SLA Breach Monitoring
-- Real-time SLA tracking
-- Operational alert generation
-- Critical wait time escalation monitoring
-- Service performance analysis
+# Features
+
+## Real-Time Call Streaming
+
+- Generates live customer interaction events
+- Streams events continuously into Kafka topics
+- Simulates operational support traffic
+- Demonstrates event-driven architecture
 
 ---
 
-## Customer Sentiment Intelligence
-- Positive / Neutral / Negative sentiment tracking
-- Customer experience analytics
-- Sentiment distribution visualization
-- Support quality monitoring
+## Operational Analytics
+
+Tracks:
+
+- Total Calls
+- Average Wait Time
+- SLA Breaches
+- Call Duration
+- Queue Distribution
+- Customer Sentiment
+- Agent Performance
+- Operational Anomalies
 
 ---
 
-## Queue Performance Analytics
-- Queue distribution analysis
+## Dashboard Analytics
+
+Interactive dashboard displaying:
+
+- Live KPIs
+- Queue performance analytics
+- Customer sentiment analysis
+- Wait time trends
+- SLA monitoring
+- Agent performance metrics
+- Operational intelligence reporting
+- Real-time anomaly detection
+
+---
+
+# Data Flow
+
+## Step 1 — Call Data Generation
+
+Fake customer interaction events are generated using:
+
+- Faker
+- Randomized operational logic
+
+Generated fields:
+
+- customer_id
+- agent_id
+- queue_name
+- call_duration
+- wait_time
+- sla_breach
+- sentiment
+- timestamp
+
+---
+
+## Step 2 — Kafka Streaming
+
+Call records are streamed into:
+
+```text
+call_records_topic
+```
+
+using Kafka Producer APIs.
+
+---
+
+## Step 3 — Event Consumption
+
+Kafka consumers continuously read events from:
+
+```text
+call_records_topic
+```
+
+and process incoming streaming operational data.
+
+---
+
+## Step 4 — Analytics Storage
+
+Processed events are inserted into PostgreSQL warehouse tables for operational analytics querying.
+
+---
+
+## Step 5 — Dashboard Visualization
+
+Streamlit dashboard reads analytics data and displays:
+
+- operational KPIs
+- SLA monitoring
+- queue analytics
+- customer sentiment insights
+- anomaly detection metrics
+- live operational intelligence
+
+---
+
+# Project Structure
+
+```text
+amazon-connect-analytics/
+│
+├── alerts/
+│
+├── architecture/
+│
+├── dashboards/
+│   └── app.py
+│
+├── data_generator/
+│   └── generate_calls.py
+│
+├── docker/
+│
+├── etl/
+│   └── consumer.py
+│
+├── kafka/
+│   └── producer.py
+│
+├── screenshots/
+│
+├── warehouse/
+│   └── data/
+│
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# Setup Instructions
+
+## 1. Clone Repository
+
+```bash
+git clone <repository-url>
+cd amazon-connect-analytics
+```
+
+---
+
+## 2. Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+Activate:
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+---
+
+## 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 4. Start Docker Containers
+
+```bash
+docker compose up -d
+```
+
+---
+
+## 5. Run Kafka Producer
+
+```bash
+python kafka/producer.py
+```
+
+---
+
+## 6. Run Kafka Consumer
+
+```bash
+python etl/consumer.py
+```
+
+---
+
+## 7. Launch Dashboard
+
+```bash
+streamlit run dashboards/app.py
+```
+
+---
+
+# Scalability Considerations
+
+- Kafka topics can be partitioned for higher throughput
+- Consumers can scale horizontally for parallel event processing
+- PostgreSQL warehouse supports operational analytics workloads
+- Dashboard services can be independently containerized and scaled
+- Streaming pipelines can be extended with monitoring and alerting systems
+- Distributed event-driven systems support enterprise operational intelligence architectures
+
+---
+
+# Dashboard Features
+
+## KPI Metrics
+
+- Total Calls
+- Average Wait Time
+- SLA Breaches
+- Average Call Duration
+
+---
+
+## Queue Analytics
+
+Visualizes:
+
+- Calls by queue
+- Queue distribution
+- Operational traffic analysis
 - Queue-wise performance comparison
-- Operational load monitoring
-- Queue efficiency tracking
 
 ---
 
-## Wait Time Analytics
-- Live wait time trend analysis
-- Queue congestion monitoring
-- Operational latency visualization
-- Performance bottleneck detection
+## Customer Sentiment Monitoring
+
+Tracks:
+
+- Positive sentiment
+- Neutral sentiment
+- Negative sentiment
 
 ---
 
-## AI-Powered Anomaly Detection
-- High wait-time anomaly identification
-- Suspicious operational pattern detection
-- AI-assisted operational intelligence
-- Critical event monitoring
+## SLA Monitoring
+
+Displays:
+
+- SLA breach percentages
+- Operational alerts
+- Critical support delays
 
 ---
 
-## Agent Performance Tracking
-- Top-performing agent analytics
-- Call duration comparison
-- Agent operational metrics
-- Workforce intelligence insights
+## Wait Time Analysis
+
+Tracks:
+
+- Wait time trends
+- Queue congestion
+- Operational latency
 
 ---
 
-## Operational Reporting
-- CSV analytics export system
-- Downloadable operational reports
-- Business intelligence workflow support
+## Agent Performance Dashboard
+
+Displays:
+
+- Top-performing agents
+- Call handling metrics
+- Operational efficiency analytics
 
 ---
 
-## Interactive Filtering System
-- Queue-level filtering
-- Sentiment-level filtering
-- Dynamic dashboard analytics updates
+## AI Anomaly Detection
+
+Identifies:
+
+- abnormal wait times
+- suspicious operational spikes
+- SLA risk patterns
+- queue congestion anomalies
 
 ---
 
-# Dashboard Screenshots
+# Future Improvements
+
+## Cloud Deployment
+
+- AWS EC2 deployment
+- Amazon ECS orchestration
+- Kubernetes deployment
+
+---
+
+## CI/CD Integration
+
+- GitHub Actions pipeline
+- Automated deployment workflow
+- Infrastructure automation
+
+---
+
+## Security Enhancements
+
+- JWT authentication
+- Role-based access control
+- Secure API integrations
+
+---
+
+## Advanced AI Features
+
+Predict:
+
+- SLA failures
+- customer escalation risks
+- support load spikes
+- operational bottlenecks
+
+---
+
+## Enterprise Monitoring
+
+- Grafana integration
+- Prometheus monitoring
+- Real-time alert systems
+
+---
+
+# Screenshots
 
 ## Dashboard Home
 
@@ -174,15 +443,15 @@ Operational Intelligence & Alerts
 
 ---
 
-## KPI Monitoring
+## KPI Metrics
 
-![KPI Monitoring](screenshots/kpi-metric.png)
+![KPI Metrics](screenshots/kpi-metric.png)
 
 ---
 
 ## Queue Distribution Analytics
 
-![Queue Analysis](screenshots/queue-analysis.png)
+![Queue Analytics](screenshots/queue-analysis.png)
 
 ---
 
@@ -192,13 +461,13 @@ Operational Intelligence & Alerts
 
 ---
 
-## SLA Breach Monitoring
+## SLA Monitoring
 
 ![SLA Monitoring](screenshots/sla-monitoring.png)
 
 ---
 
-## Wait Time Analytics
+## Wait Time Analysis
 
 ![Wait Time Analysis](screenshots/waittimeanalysis.png)
 
@@ -228,228 +497,24 @@ Operational Intelligence & Alerts
 
 ---
 
-# Tech Stack
-
-| Technology | Purpose |
-|---|---|
-| Python | Backend processing |
-| Apache Kafka | Real-time event streaming |
-| PostgreSQL | Analytics warehouse |
-| Streamlit | BI dashboard |
-| Plotly | Interactive visualizations |
-| SQLAlchemy | Database integration |
-| Docker | Containerization |
-| Pandas | Data analytics |
-| Scikit-Learn | AI anomaly detection |
+All screenshots were generated from live streaming data processed through Kafka consumers and visualized inside the Streamlit analytics dashboard.
 
 ---
 
-# Folder Structure
+# Learning Outcomes
 
-```text
-amazon-connect-analytics/
-│
-├── alerts/
-├── architecture/
-├── dashboards/
-│   └── app.py
-│
-├── data_generator/
-│   └── generate_calls.py
-│
-├── docker/
-│
-├── etl/
-│   └── consumer.py
-│
-├── kafka/
-│   └── producer.py
-│
-├── screenshots/
-│
-├── warehouse/
-│   └── data/
-│
-├── docker-compose.yml
-├── requirements.txt
-├── README.md
-```
+This project demonstrates practical understanding of:
 
----
-
-# Installation Guide
-
-## Clone Repository
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_LINK
-cd amazon-connect-analytics
-```
-
----
-
-## Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-# Docker Deployment
-
-## Start Containers
-
-```bash
-docker-compose up --build
-```
-
-This initializes:
-- Kafka
-- Zookeeper
-- PostgreSQL
-- Dashboard services
-
----
-
-# Run Kafka Producer
-
-```bash
-python kafka/producer.py
-```
-
----
-
-# Run Kafka Consumer
-
-```bash
-python etl/consumer.py
-```
-
----
-
-# Launch Dashboard
-
-```bash
-streamlit run dashboards/app.py
-```
-
-Dashboard URL:
-
-```text
-http://localhost:8501
-```
-
----
-
-# Real-Time Processing Workflow
-
-## Step 1
-The call data generator continuously creates simulated customer interaction records.
-
-## Step 2
-Kafka Producer streams events into the Kafka Broker in real time.
-
-## Step 3
-Kafka Consumer processes streaming operational events.
-
-## Step 4
-PostgreSQL stores analytics-ready datasets inside the operational warehouse.
-
-## Step 5
-The Streamlit dashboard visualizes operational intelligence metrics in real time.
-
----
-
-# Machine Learning Anomaly Detection
-
-The system identifies:
-- abnormal wait times
-- operational spikes
-- suspicious queue congestion
-- SLA risk patterns
-
-This simulates enterprise operational intelligence workflows commonly used in modern cloud support systems.
-
----
-
-# Operational KPIs Monitored
-
-- Total Calls
-- Average Wait Time
-- SLA Breaches
-- Average Call Duration
-- Queue Distribution
-- Customer Sentiment
-- Agent Performance
-- Operational Anomalies
-
----
-
-# Engineering Highlights
-
-- Event-driven architecture
-- Real-time streaming pipeline
-- Operational intelligence dashboard
-- AI-powered anomaly detection
-- Enterprise BI visualization
-- Interactive filtering system
-- Dockerized deployment
-- Analytics warehouse integration
-- Real-time KPI monitoring
-
----
-
-# Enterprise Use Cases
-
-This platform simulates systems used in:
-
-- Amazon Connect analytics environments
-- Cloud contact center intelligence platforms
-- Operational monitoring systems
-- Customer experience analytics
-- Streaming analytics pipelines
-- Enterprise BI dashboards
-- Support operations intelligence
-- Real-time SLA tracking systems
-
----
-
-# Future Improvements
-
-## Cloud Deployment
-- AWS EC2 deployment
-- Amazon ECS orchestration
-- Kubernetes deployment
-
----
-
-## CI/CD Automation
-- GitHub Actions pipeline
-- Automated deployment workflow
-- Infrastructure automation
-
----
-
-## Security Enhancements
-- JWT authentication
-- Role-based access control
-- Secure API integrations
-
----
-
-## Advanced AI Features
-- Predictive SLA forecasting
-- Intelligent escalation prediction
-- Customer churn prediction
-- LLM-powered operational insights
-
----
-
-## Scalability Improvements
-- Redis caching
-- Distributed Kafka clusters
-- Kubernetes autoscaling
+- Event-driven systems
+- Streaming architecture
+- Kafka pipelines
+- Operational analytics
+- Real-time dashboards
+- Dockerized environments
+- PostgreSQL warehousing
+- Distributed systems concepts
+- Data engineering workflows
+- BI dashboard development
 
 ---
 
@@ -464,7 +529,6 @@ This platform simulates systems used in:
 - Operational Monitoring
 - Python Development
 - Database Engineering
-- Machine Learning Integration
 - Docker Containerization
 - Real-Time Analytics
 - ETL Pipeline Development
