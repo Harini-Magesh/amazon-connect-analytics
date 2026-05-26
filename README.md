@@ -94,55 +94,23 @@ The architecture follows modern event-driven data engineering principles commonl
 * Exportable Analytics Reports
 
 ---
+# Screenshot
 
-# Dashboard Screenshots
+![Dashboard Home](screenshot/dashboard-home.png)
 
-## Dashboard Home
+![Queue Analytics](screenshot/queue-analysis.png)
 
-![Dashboard Home](screenshots/dashboard-home.png)
+![Sentiment Analysis](screenshot/sentiment-analysis.png)
 
----
+![SLA Monitoring](screenshot/sla-monitoring.png)
 
-## Queue Distribution Analytics
+![Wait Time Analysis](screenshot/waittimeanalysis.png)
 
-![Queue Analytics](screenshots/queue-analysis.png)
+![Call Duration](screenshot/callduration.png)
 
----
+![Top Performing Agents](screenshot/topperforming.png)
 
-## Customer Sentiment Analysis
-
-![Sentiment Analysis](screenshots/sentiment-analysis.png)
-
----
-
-## SLA Monitoring
-
-![SLA Monitoring](screenshots/sla-monitoring.png)
-
----
-
-## Wait Time Analysis
-
-![Wait Time Analysis](screenshots/waittimeanalysis.png)
-
----
-
-## Call Duration Analytics
-
-![Call Duration](screenshots/callduration.png)
-
----
-
-## Top Performing Agents
-
-![Top Performing Agents](screenshots/topperforming.png)
-
----
-
-## AI Anomaly Detection
-
-![Anomaly Detection](screenshots/anomaly-detection.png)
-
+![Anomaly Detection](screenshot/anomaly-detection.png)
 ---
 
 # Project Structure
